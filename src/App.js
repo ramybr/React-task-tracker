@@ -12,35 +12,36 @@ import { useState } from 'react'
 function App() {
 
   const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: `Doctor's Appointment`,
-      date : `Friday 03 June 2022`,
-      reminder : false
-    },
+    // {
+    //   id: 1,
+    //   text: `Doctor's Appointment`,
+    //   date : `Friday 03 June 2022`,
+    //   reminder : false
+    // },
   
-    {
-      id: 2,
-      text: `Meeting at work`,
-      date : `Monday 06 June 2022`,
-      reminder : false
-    },
+    // {
+    //   id: 2,
+    //   text: `Meeting at work`,
+    //   date : `Monday 06 June 2022`,
+    //   reminder : false
+    // },
   
-    {
-      id: 3,
-      text: `Gym Membership`,
-      date : `Thursday 09 August 2022`,
-      reminder : false
-    }
+    // {
+    //   id: 3,
+    //   text: `Gym Membership`,
+    //   date : `Thursday 09 August 2022`,
+    //   reminder : false
+    // }
   ])
+
+
+  const [showAdd, setShowAdd] = useState(false)
 
 
 const addTask = (task) => {
   const id = Math.floor(Math.random() * 10000) + 1
   const newTask = {id, ...task}
-console.log(newTask)
-console.log(tasks)
-setTasks([tasks, ...newTask])
+setTasks([...tasks, newTask])
  
 }
 
@@ -61,8 +62,8 @@ setTasks(tasks.filter((task) => task.id !== id
 
   return (
     <div className="container">
-     <Header /> 
-     <AddTask onAdd={addTask} />
+     <Header onAdd={() => setShowAdd(!showAdd)} showAdd={showAdd} /> 
+     {showAdd && <AddTask onAdd={addTask} />}
      { tasks.length > 0 ? (
      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
      ) : (

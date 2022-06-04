@@ -29,13 +29,13 @@ const AddTask = ({ onAdd }) => {
 
         <div className="form-control">
         <label> Date & Time </label>
-        <input type="text" placeholder="Date & Time" value={date} onChange={(e) => setDate(e.target.value)}  />
+        <input type="datetime-local" placeholder="Date & Time" value={date} onChange={(e) => setDate(e.target.value)}  />
         </div>
 
-        <div className="form-control form-control-check">
+        {(date && text) && <div className="form-control form-control-check">
         <label>Set Reminder </label>
         <input type="checkbox" value={reminder} checked={reminder} onChange={(e) => setReminder(e.currentTarget.checked)}   />
-        </div>
+        </div>}
         <input type="submit" value="Save" className="btn btn-block"  />
     </form>
   )

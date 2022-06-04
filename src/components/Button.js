@@ -2,7 +2,7 @@ const Button = ({color, text, onClick}) => {
     
     
     return (
-        <button  className="btn" onClick={onClick}>{text}</button>
+        <button style={{background:color}} className="btn" onClick={onClick}>{text}</button>
     )
 }
 export default Button
